@@ -337,6 +337,7 @@ hr {
 				data: formData,
 				processData: false,
 				contentType: false,
+				enctype: 'multipart/form-data',
 				type: 'POST',
 				success: function(result){ 
 					if(result.isSuccess){
