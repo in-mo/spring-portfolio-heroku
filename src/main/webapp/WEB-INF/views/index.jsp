@@ -161,7 +161,6 @@ hr {
 		</div>
 		
 		<div class="contentTypes drawOutLine">
-			<c:if test="${ not empty hostList }">
 			<c:forEach var="host" items="${ hostList }">
 				<c:if test="${ host.classification eq '부티크 호텔' }">
 					<div class="contentInfo drawOutLine" onclick="location.href='/content/info?num=${ host.num }'">
@@ -214,7 +213,6 @@ hr {
 					</div>
 				</c:if>
 			</c:forEach>
-			</c:if>
 		</div>
 	</section>
 	<hr>
@@ -259,16 +257,15 @@ hr {
 
 <script>
 	let strLocationList = '${ locationList }';
-	if(strLocationList != ''){
-		let str = strLocationList.substring(1, strLocationList.length-1);
-		str = str.replace(/ /g,"")
-		let locationList = str.split(',');
-	
-		for (var key in locationList) { 
-			let option = $('<option value="' +locationList[key] + '">' + locationList[key] + '</option>');
-			$('#location').append(option);
-		}
+	let str = strLocationList.substring(1, strLocationList.length-1);
+	str = str.replace(/ /g,"")
+	let locationList = str.split(',');
+
+	for (var key in locationList) { 
+		let option = $('<option value="' +locationList[key] + '">' + locationList[key] + '</option>');
+		$('#location').append(option);
 	}
+
 	var rangeDate = 31; // set limit day
 	var setSdate, setEdate;
 	$("#checkin").datepicker({
