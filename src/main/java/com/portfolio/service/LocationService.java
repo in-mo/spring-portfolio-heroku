@@ -13,6 +13,7 @@ import com.portfolio.domain.HostVo;
 import com.portfolio.domain.LocationVo;
 import com.portfolio.domain.ReviewVo;
 import com.portfolio.mapper.HostMapper;
+import com.portfolio.mapper.ImagesMapper;
 import com.portfolio.mapper.LocationMapper;
 import com.portfolio.mapper.ReviewMapper;
 
@@ -28,6 +29,8 @@ public class LocationService {
 	@Autowired
 	private HostMapper hostMapper;
 	
+	@Autowired
+	private ImagesMapper imagesMapper;
 	
 	@Transactional
 	public Map<String, Object> getLocationListAndMainInfo() {
@@ -39,6 +42,11 @@ public class LocationService {
 		hostList.add(hostMapper.getContentInfoForMain("주택"));
 		hostList.add(hostMapper.getContentInfoForMain("독특한 숙소"));
 		hostList.add(hostMapper.getContentInfoForMain("부티크 호텔"));
+		
+		for(HostVo hostVo : hostList) {
+			hostVo.setImageVo(imagesMapper.getImageByNoNum(hostVo.getNum()));
+		}
+		
 		
 		Map<String, Object> obj = new HashMap<>();
 		obj.put("locationList", locationList);
