@@ -30,26 +30,19 @@ public class HomeController {
 	@Autowired
 	private HostService hostService;
 	
-//	@GetMapping("/")
-//	public String main(Model model) {
-//		List<LocationVo> locationList = locationService.getLocationList();
-//		List<ReviewVo> reviewList = reviewService.getReviews();
-//		List<HostVo> hostList = hostService.getContentInfoForMain();
-//		ArrayList<String> strLocationList = new ArrayList();
-//		for(LocationVo locationVo : locationList) {
-//			strLocationList.add(locationVo.getLocation());
-//		}
-//		
-//		model.addAttribute("reviewList", reviewList);
-//		model.addAttribute("locationList", strLocationList);
-//		model.addAttribute("hostList", hostList);
-//		return "index";
-//	}
-	
 	@GetMapping("/")
-	public String write() {
-		log.info("Get - write() 호출됨");
-
-		return "/content/contentWriteForm";
+	public String main(Model model) {
+		List<LocationVo> locationList = locationService.getLocationList();
+		List<ReviewVo> reviewList = reviewService.getReviews();
+		List<HostVo> hostList = hostService.getContentInfoForMain();
+		ArrayList<String> strLocationList = new ArrayList();
+		for(LocationVo locationVo : locationList) {
+			strLocationList.add(locationVo.getLocation());
+		}
+		
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("locationList", strLocationList);
+		model.addAttribute("hostList", hostList);
+		return "index";
 	}
 }
