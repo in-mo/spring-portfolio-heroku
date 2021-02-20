@@ -266,9 +266,6 @@ hr {
 		$('#location').append(option);
 	}
 
-	
-	console.log('hostList : ${hostList}');
-	
 	var rangeDate = 31; // set limit day
 	var setSdate, setEdate;
 	$("#checkin").datepicker({
