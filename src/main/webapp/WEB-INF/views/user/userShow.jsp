@@ -87,18 +87,18 @@ hr {
 							
 						</div>
 						<div class="drawOutLine" v-show="imageBtnShow">
-<!-- 							<form id="FILE_FORM" method="post" enctype="multipart/form-data" action=""> -->
-<!-- 					            <input type="file" id="FILE_TAG" name="filename" accept="image/*" @change="onFileChange" required> -->
-<!-- 					            <br><br> -->
-<!-- 					            <a class="ui-shadow ui-btn ui-corner-all btn btn-dark" href="javascript:uploadFile();">저장</a> -->
-<!-- 					            <button type="button" class="btn btn-dark" v-on:click="deleteFile">취소</button> -->
-<!-- 					        </form> -->
-					        <form id="ajaxform" action="/user/saveImage" method="post" enctype="multipart/form-data">
-					        	<input type="file" id="FILE_TAG" name="filename" accept="image/*" @change="onFileChange" required>
+							<form id="FILE_FORM" method="post" enctype="multipart/form-data" action="">
+					            <input type="file" id="FILE_TAG" name="filename" accept="image/*" @change="onFileChange" required>
 					            <br><br>
-					            <input type="button" class="btn btn-dark" id="saveImageBtn" value="전송" />
+					            <a class="ui-shadow ui-btn ui-corner-all btn btn-dark" href="javascript:uploadFile();">저장</a>
 					            <button type="button" class="btn btn-dark" v-on:click="deleteFile">취소</button>
-				        	</form>
+					        </form>
+<!-- 					        <form id="ajaxform" action="/user/saveImage" method="post" enctype="multipart/form-data"> -->
+<!-- 					        	<input type="file" id="FILE_TAG" name="filename" accept="image/*" @change="onFileChange" required> -->
+<!-- 					            <br><br> -->
+<!-- 					            <input type="button" class="btn btn-dark" id="saveImageBtn" value="전송" /> -->
+<!-- 					            <button type="button" class="btn btn-dark" v-on:click="deleteFile">취소</button> -->
+<!-- 				        	</form> -->
 						</div>
 					</div>
 					<hr>
@@ -302,7 +302,7 @@ hr {
 			
 		    var form = $('#FILE_FORM')[0];
 		    var formData = new FormData(form);
-		    formData.append("fileObj", $("#FILE_TAG")[0].files[0]);
+		    formData.append("filename", $("#FILE_TAG")[0].files[0]);
 
 		    if(typeof $("#FILE_TAG")[0].files[0] == 'undefined'){
 			    alert('이미지를 선택해주세요!');
