@@ -313,7 +313,7 @@ public class UserController {
 		return "/user/myHosts";
 	}
 	
-	@PostMapping("/saveImage")
+	@PostMapping(value = "/saveImage", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Map<String, Object> saveImage(
 			HttpServletRequest request,
