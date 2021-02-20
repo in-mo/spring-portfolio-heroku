@@ -43,6 +43,6 @@ public class HomeController {
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("locationList", strLocationList);
 		model.addAttribute("hostList", hostList);
-		return "/index";
+		return "index";
 	}
 }
